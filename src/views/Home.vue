@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <div class="posts">
-      <div class="post" v-for="(post,index) in posts" :key="index">
+      <div v-for="(post,index) in posts" :key="index" class="post" :class="getClass(index)">
         <img :src="require(`@/assets/img/${post.img}`)" />
       </div>
     </div>
@@ -26,15 +26,18 @@ export default {
         { img: "vuepress-cookies-cover.png" }
       ]
     };
+  },
+  methods: {
+    getClass(index) {
+      if (index === 0) {
+        return "foo";
+      }
+    }
   }
 };
 </script>
 
 <style scoped>
-body {
-  margin: 20px;
-  padding: 0;
-}
 #home {
   width: 1000px;
   height: 80vh;
